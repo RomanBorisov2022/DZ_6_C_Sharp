@@ -5,7 +5,6 @@
 
 Console.Clear();
 
-Console.Clear();
 
 int userInput = UserInput("Введите число элементов будущего массива: ", "Ошибка ввода!");
 
@@ -13,9 +12,9 @@ int[] array = GetArray(userInput);
 
 Console.WriteLine(String.Join(" ", array));
 
-int evenNumbers = GetEvenNumbers(array);
+int positiveNumbers = GetPositiveNumbers(array);
 
-Console.WriteLine($"Even numbers = {evenNumbers}");
+Console.WriteLine($"Positive numbers = {positiveNumbers}");
 
 
 
@@ -36,25 +35,25 @@ int UserInput(string message, string errorMessage)
 }
 //______________________________________________________________//
 
-int[] GetArray(int userInput, int minValue, int maxValue)
+int[] GetArray(int userInput)
 {
     int[] res = new int[userInput];
 
     for (int i = 0; i < userInput; i++)
     {
-        res[i] = new Random().Next(minValue, maxValue +1);
+        res[i] = UserInput("Введите число: ", "Ошибка ввода!");
     }
     return res;
 }
 
 //________________________________________________________________//
 
-int GetEvenNumbers(int[] arr)
+int GetPositiveNumbers(int[] arr)
 {
-    int evenNumbers = 0;
+    int positiveNumbers = 0;
     foreach (int el in arr)
     {
-        if (el % 2 == 0) evenNumbers++;
+        if (el > 0) positiveNumbers++;
     }
-    return evenNumbers;
+    return positiveNumbers;
 }
